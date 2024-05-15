@@ -1,10 +1,13 @@
 resource "aws_s3_bucket" "this" {
   bucket = "${random_pet.bucket.id}-${var.environment}"
 
-  tags = {
-    Service     = "Curso AWS Com Terraform"
-    ManagedBy   = "Terraform"
-    Environment = var.environment
-    Owner       = "Andrelise"
-  }
+  tags = local.common_tags
+}
+
+resource "aws_s3_object" "this" {
+  bucket = aws_s3_bucket.this.id
+  key    = "config/${local.ip_filepath}"
+  source = local.ip_filepath
+
+  etag = filemd5(local.ip_filepath)
 }
