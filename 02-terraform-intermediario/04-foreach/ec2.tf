@@ -17,5 +17,13 @@ resource "aws_instance" "this" {
         }
     }
 
-    ami = data.aws_ami.ubuntu
+    ami = data.aws_ami.ubuntu.id
+    //each.x é a forma de acessar o foreach - o value retorna todo o conj
+    instance_type = lookup(each.value, "type", null)
+
+    tags = {
+        Project = "Curso AWS Com Terraform"
+        //each.key retorna web ou key
+        Name = "${each.key}: ${lookup(each.value, "name", null)}"
+    }
 }
