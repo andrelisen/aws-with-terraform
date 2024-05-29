@@ -3,8 +3,8 @@ data "aws_ami" "ubuntu" {
   most_recent = true
   name_regex  = "ubuntu"
 
-  filter{
-    name = "architecture"
+  filter {
+    name   = "architecture"
     values = ["x86_64"]
   }
 
