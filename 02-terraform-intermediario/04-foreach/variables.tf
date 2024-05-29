@@ -1,11 +1,11 @@
 variable "aws_region" {
-  type = string
+  type        = string
   description = ""
-  default = "us-east-1"
+  default     = "us-east-1"
 }
 
 variable "aws_profile" {
-  type = string
+  type        = string
   description = ""
-  default = "terraform-pessoal"
+  default     = "terraform-pessoal"
 }
