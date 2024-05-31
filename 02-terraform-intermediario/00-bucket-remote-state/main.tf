@@ -53,3 +53,7 @@ output "remote_state_bucket" {
 output "remote_state_bucket_arn" {
   value = aws_s3_bucket.remote-state.arn
 }
+
+output "dynamodb_table_name" {
+  value = aws_dynamodb_table.lock_table.name
+}
